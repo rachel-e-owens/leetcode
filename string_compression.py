@@ -57,6 +57,8 @@ class Solution(object):
                 count += 1
                 i += 1
 
+            #current_len is keeping track of current length of return array
+            # we update at current_len, overwriting the old array as we go
             chars[current_len] = chars[i]
             #keep track of length of string
             current_len += 1
@@ -71,10 +73,19 @@ class Solution(object):
             
 
 s = Solution()
-chars = ["a","a","b","b","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c"]
+chars = ["a","a","a","b","b","b","b","c","c","c"]
 print(s.compress(chars))
 
-# have 1 pointer and have same_char flag
+# have 1 pointer 
+# keep track current length or j
+# keep count of how many times character occurs
 # start iterating through array
 # while i < len(chars)
-# 
+# increment count and increment i
+# set chars[current_length] = chars[i]
+# if count is greater than 1 (since we don't compress if only 1)
+# convert count into a string (since if double digit number we need to append each digit separately, i.e. 10 -> "1", "0")
+# set chars[current_length] = first digit in "count"
+# increment current_length
+# finally increment i
+# return current_length
