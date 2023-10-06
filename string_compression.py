@@ -16,6 +16,7 @@ class Solution(object):
         :type chars: List[str]
         :rtype: int
         """
+        """
         s = "" 
         current_char = ''
         next_char = ''
@@ -38,12 +39,40 @@ class Solution(object):
             
             if current_length > 1:
                 s += current_char
-                chars[next-1] = current_length                
-        
+                chars[next-1] = current_length
+                x += 1          """
+              
+        # length of array
+        n = len(chars)
+        # base case
+        if n < 2:
+            return n
+
+        i = current_len = 0
+        while i < n:
+            #reset the count each time
+            count = 1
+            #while characters are repeating...
+            while i < n - 1 and chars[i] == chars[i+1]:
+                count += 1
+                i += 1
+
+            chars[current_len] = chars[i]
+            #keep track of length of string
+            current_len += 1
+            if count > 1:
+                for val in str(count):
+                    chars[current_len] = val
+                    current_len += 1
+
+            i +=1
+
+        return current_len
+            
 
 s = Solution()
-chars = ["a","a","b","b","c","c","c"]
-s.compress(chars)
+chars = ["a","a","b","b","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c"]
+print(s.compress(chars))
 
 # have 1 pointer and have same_char flag
 # start iterating through array
